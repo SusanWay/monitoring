@@ -1,0 +1,37 @@
+# VCS
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info
+*.egg
+*.log
+
+# Virtualenv
+.venv
+env/
+venv/
+ENV/
+
+# Editor configs / IDE
+.vscode/
+.idea/
+*.swp
+
+# Django stuff
+media/
+staticfiles/
+*.sqlite3
+
+# Docker
+Dockerfile
+.dockerignore
+
+# OS junk
+.DS_Store
+Thumbs.db

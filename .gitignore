@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info
+*.egg
+*.log
+
+# Virtualenv
+.venv/
+env/
+venv/
+ENV/
+
+# IDE / редакторы
+.vscode/
+.idea/
+*.swp
+
+# Django
+media/
+staticfiles/
+*.sqlite3
+
+# Docker volumes
+db/data/
+media_data/
+pg_data/
