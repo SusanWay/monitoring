@@ -22,15 +22,15 @@ services:
     image: postgres:14
     container_name: postgres_db
     environment:
-      POSTGRES_USER: worker
-      POSTGRES_PASSWORD: worker
-      POSTGRES_DB: app
+      POSTGRES_USER: ${DJANGO_DB_USER}
+      POSTGRES_PASSWORD: ${DJANGO_DB_PASS}
+      POSTGRES_DB: ${DJANGO_DB_NAME}
     ports:
       - "5432:5432"
     volumes:
       - ./db/data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U worker -d app"]
+      test: ["CMD-SHELL", "pg_isready -U ${DJANGO_DB_USER} -d ${DJANGO_DB_NAME} -p ${DJANGO_DB_PORT:-5432}"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -85,7 +85,7 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s/grafana
+      - GF_SERVER_ROOT_URL=${PUBLIC_ORIGIN}/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
     volumes:
       - grafana_data:/var/lib/grafana
