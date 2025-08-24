@@ -63,7 +63,6 @@ services:
   node-exporter:
     image: prom/node-exporter:v1.8.2
     container_name: node_exporter
-    # читаем системные FS хоста (Linux)
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -72,7 +71,6 @@ services:
       - --path.procfs=/host/proc
       - --path.sysfs=/host/sys
       - --path.rootfs=/rootfs
-      # чуть «фильтруем» лишние точки монтирования
       - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($|/)
     expose:
       - "9100"
